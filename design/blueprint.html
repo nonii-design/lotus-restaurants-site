@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>設計図 — 有限会社Lotus LP（1ページ＋外部リンク）</title>
+  <style>
+    :root {
+      --bg: #0f0e0c;
+      --panel: #1a1815;
+      --border: #2e2b26;
+      --text: #e8e4dc;
+      --muted: #8a847a;
+      --accent: #c9a962;
+      --wire: #3d3a35;
+      --font: "Hiragino Sans", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 15px;
+    }
+    a { color: var(--accent); }
+    header.doc {
+      padding: 2rem 1.5rem 1.5rem;
+      border-bottom: 1px solid var(--border);
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    header.doc h1 {
+      margin: 0 0 0.5rem;
+      font-size: 1.35rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+    header.doc p { margin: 0; color: var(--muted); font-size: 0.9rem; }
+    main { max-width: 960px; margin: 0 auto; padding: 1.5rem; }
+    h2 {
+      margin: 2.25rem 0 0.75rem;
+      font-size: 1.05rem;
+      border-left: 3px solid var(--accent);
+      padding-left: 0.65rem;
+    }
+    h3 { margin: 1.5rem 0 0.5rem; font-size: 0.95rem; color: var(--text); }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+      margin: 0.75rem 0 1.5rem;
+    }
+    th, td {
+      border: 1px solid var(--border);
+      padding: 0.5rem 0.6rem;
+      text-align: left;
+      vertical-align: top;
+    }
+    th { background: var(--panel); color: var(--muted); font-weight: 600; }
+    code {
+      font-size: 0.8em;
+      background: var(--panel);
+      padding: 0.15rem 0.35rem;
+      border-radius: 3px;
+    }
+    .note {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      padding: 0.85rem 1rem;
+      border-radius: 6px;
+      font-size: 0.88rem;
+      color: var(--muted);
+      margin: 0.75rem 0;
+    }
+    .wireframe {
+      display: grid;
+      gap: 0.5rem;
+      margin: 1rem 0 2rem;
+    }
+    .box {
+      border: 2px dashed var(--wire);
+      border-radius: 4px;
+      padding: 0.75rem 1rem;
+      background: rgba(26, 24, 21, 0.6);
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+    .box strong { color: var(--text); }
+    .box.hero { min-height: 5rem; }
+    .box.video { border-color: var(--accent); background: rgba(201, 169, 98, 0.06); }
+    .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; }
+    @media (max-width: 640px) { .row2 { grid-template-columns: 1fr; } }
+    .proto {
+      margin-top: 2.5rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+    }
+    .proto-title {
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+    .proto-page {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      background: #0a0908;
+    }
+    .proto-header {
+      height: 40px;
+      background: #121110;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      padding: 0 12px;
+      font-size: 11px;
+      color: var(--muted);
+    }
+    .proto-block {
+      padding: 14px;
+      font-size: 12px;
+      color: var(--muted);
+      border-bottom: 1px solid #222;
+    }
+    .proto-block:last-child { border-bottom: 0; }
+    .proto-block h4 { margin: 0 0 8px; font-size: 11px; color: var(--accent); letter-spacing: 0.15em; }
+    ul.toc { margin: 0.5rem 0 0; padding-left: 1.2rem; color: var(--muted); font-size: 0.9rem; }
+    ul.toc a { color: var(--accent); }
+    .tag {
+      display: inline-block;
+      padding: 0.1rem 0.45rem;
+      border-radius: 3px;
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      background: rgba(201, 169, 98, 0.12);
+      color: var(--accent);
+      border: 1px solid rgba(201, 169, 98, 0.3);
+    }
+  </style>
+</head>
+<body>
+  <header class="doc">
+    <h1>設計図 — ランディングページ（1ページ＋外部リンク）</h1>
+    <p>有限会社Lotus（Lotus Co., Ltd.）/ 飲食ブランド「SUIREN」「粋蓮」向け。本HTMLはブラウザで開くだけで構成を共有・確認できます。本番は Next.js の <code>app/page.tsx</code> がソースです。</p>
+  </header>
+  <main>
+    <h2>目的・方針</h2>
+    <ul class="toc">
+      <li>訪問者を <strong style="color:var(--text)">1枚のLP</strong> で世界観・店舗の違いを把握させる</li>
+      <li>予約・地図・最新情報は <strong style="color:var(--text)">外部（Instagram / 予約 / Googleビジネス）</strong> に誘導</li>
+      <li>ブランド動画は SUIREN（志木）＋ 粋蓮（宮古島）合同の <strong style="color:var(--text)">共通ムービー</strong> をHeroの直下に1本だけ置く</li>
+      <li>店舗③（炉と島釜飯 粋蓮）はオープン前でもセクションとして掲載（Coming soon）</li>
+    </ul>
+
+    <h2>ページ内アンカー（本番と同期）</h2>
+    <p class="note">ヘッダーのジャンプや共有リンクは、このIDを使います（URL例: <code>https://ドメイン/#store-suiren-shiki</code>）。</p>
+    <table>
+      <thead>
+        <tr>
+          <th>セクション</th>
+          <th>アンカー ID</th>
+          <th>内容</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>ヒーロー</td>
+          <td>（トップ）</td>
+          <td>メインビジュアル・キャッチコピー・CTA（店舗 / 企業情報）</td>
+        </tr>
+        <tr>
+          <td>ブランド動画 <span class="tag">共通</span></td>
+          <td><code>brand-movie</code></td>
+          <td>SUIREN＋粋蓮 合同のイメージムービー 1本。<code>brandVideo.src</code> 未設定時はサムネ＋プレースホルダー表示。</td>
+        </tr>
+        <tr>
+          <td>店舗ブロック導入</td>
+          <td><code>stores</code></td>
+          <td>1ページ構成の説明1行</td>
+        </tr>
+        <tr>
+          <td>店舗① 志木</td>
+          <td><code>store-suiren-shiki</code></td>
+          <td>お箸ビストロ SUIREN。画像・コピー・ギャラリー・外部3ボタン</td>
+        </tr>
+        <tr>
+          <td>店舗② 宮古島</td>
+          <td><code>store-suiren-miyako</code></td>
+          <td>地鶏と島野菜 粋蓮。地元客中心／観光期（4〜11月）もオン</td>
+        </tr>
+        <tr>
+          <td>店舗③ 新店（Coming soon）</td>
+          <td><code>store-ro-suiren</code></td>
+          <td>炉と島釜飯 粋蓮。客単価 5,000〜6,000円。炭火（炉）＋島釜飯、地元客向け</td>
+        </tr>
+        <tr>
+          <td>企業情報</td>
+          <td><code>company</code></td>
+          <td>社名・設立・資本金・代表・従業員・事業内容・所在地（本社／埼玉）・取引金融機関・問い合わせ</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>外部リンク設計（店舗ごと）</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>種別</th>
+          <th>役割</th>
+          <th>設定ファイル</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Instagram</td>
+          <td>雰囲気・告知・ストーリー導線</td>
+          <td><code>lib/site-config.ts</code> → <code>instagramUrl</code></td>
+        </tr>
+        <tr>
+          <td>予約・公式</td>
+          <td>予約フォーム・予約サイト・公式ページ</td>
+          <td><code>reserveUrl</code></td>
+        </tr>
+        <tr>
+          <td>Google ビジネス</td>
+          <td>地図・電話・口コミ・営業時間</td>
+          <td><code>googleBusinessUrl</code>（未設定時はボタン無効）</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>ワイヤーフレーム（1ページの流れ）</h2>
+    <div class="wireframe">
+      <div class="box hero"><strong>HERO</strong> — 全画面近いビジュアル / キャッチ / CTA</div>
+      <div class="box video"><strong>BRAND MOVIE</strong> — SUIREN＋粋蓮 合同のブランド動画（1本・全店舗共通）</div>
+      <div class="box"><strong>STORES 導入</strong> — 「外部リンクで詳細」の一文</div>
+      <div class="box"><strong>STORE ①（お箸ビストロ SUIREN / 志木）</strong> — ヒーロー → テキスト → ギャラリー2枚 → 外部3リンク</div>
+      <div class="box"><strong>STORE ②（地鶏と島野菜 粋蓮 / 宮古島）</strong> — 同上。ターゲット: 地元客中心</div>
+      <div class="box"><strong>STORE ③（炉と島釜飯 粋蓮 / 宮古島 新店）</strong> — Coming soon バッジ / 客単価 5,000〜6,000円 / 炭火（炉）＋島釜飯</div>
+      <div class="box"><strong>COMPANY</strong> — 有限会社Lotus（設立1999年7月 / 資本金300万 / 代表 坂西優馬 / 従業員30名 / 本社：宮古島・埼玉：志木）</div>
+      <div class="box"><strong>FOOTER</strong> — コピーライト・企業へのジャンプ</div>
+    </div>
+
+    <h2>店舗③ コンセプト（炉と島釜飯 粋蓮）</h2>
+    <div class="note">
+      <strong>業態:</strong> 炭火（炉）＋ 島野菜をふんだんに使った島釜飯<br />
+      <strong>単価:</strong> 5,000〜6,000円（現行の粋蓮より少し高めの落ち着いた業態）<br />
+      <strong>ターゲット:</strong> 地元のお客様が中心。4〜11月は観光客もオンして繁忙期に。<br />
+      <strong>モットー:</strong> あくまでも地元のお客様を大事に。
+    </div>
+
+    <h2>企業情報（現時点で掲載する範囲）</h2>
+    <table>
+      <tbody>
+        <tr><th>社名</th><td>有限会社Lotus（Lotus Co., Ltd.）</td></tr>
+        <tr><th>設立</th><td>1999年7月</td></tr>
+        <tr><th>資本金</th><td>300万円</td></tr>
+        <tr><th>代表</th><td>取締役 坂西 優馬</td></tr>
+        <tr><th>従業員数</th><td>30名（2026年5月時点）</td></tr>
+        <tr><th>事業内容</th><td>飲食店経営／飲食店オペレーション受託業務／飲食店コンサルティング業務</td></tr>
+        <tr><th>本社</th><td>沖縄県宮古島市平良下里542-2 与古田ハイツ103</td></tr>
+        <tr><th>埼玉オフィス</th><td>埼玉県志木市本町5-24-2 TOMONIビル1F</td></tr>
+        <tr><th>取引金融機関</th><td>沖縄銀行・三井住友銀行・東京信用金庫</td></tr>
+        <tr><th>お問い合わせ</th><td><a href="mailto:info@and-suiren.com">info@and-suiren.com</a></td></tr>
+      </tbody>
+    </table>
+
+    <h2>プレビューの進め方</h2>
+    <div class="note">
+      <strong>本番プレビュー:</strong> ターミナルでプロジェクトフォルダに移動し <code>npm install</code> のあと <code>npm run dev</code> → ブラウザで <code>http://localhost:3000</code><br /><br />
+      <strong>静的ワイヤー:</strong> 下の「レイアウト試し描き」は同じファイル内のダミーです。文言やブロック順をここで試したら、本番の React コンポーネントに反映してください。
+    </div>
+
+    <div class="proto">
+      <div class="proto-title">Layout sketch（ダミー）</div>
+      <div class="proto-page">
+        <div class="proto-header">LOGO（Lotus） — SUIREN / 粋蓮 / 炉と島釜飯 粋蓮 | 企業</div>
+        <div class="proto-block" style="min-height:120px;background:linear-gradient(180deg,#2a2620,#0a0908);">
+          <h4>HERO</h4>
+          メインコピー / サブコピー / CTA
+        </div>
+        <div class="proto-block" style="background:rgba(201,169,98,0.05);border-top:1px solid rgba(201,169,98,0.2);">
+          <h4>#brand-movie</h4>
+          <span style="color:var(--accent)">BRAND MOVIE</span> — SUIREN＋粋蓮 合同（1本・共通）
+        </div>
+        <div class="proto-block">
+          <h4>#stores</h4>
+          外部リンクで予約・地図へ
+        </div>
+        <div class="proto-block">
+          <h4>#store-suiren-shiki</h4>
+          お箸ビストロ SUIREN：画像帯 → 説明 → ギャラリー → [IG] [予約] [Google]
+        </div>
+        <div class="proto-block">
+          <h4>#store-suiren-miyako</h4>
+          地鶏と島野菜 粋蓮（地元客中心）…
+        </div>
+        <div class="proto-block">
+          <h4>#store-ro-suiren</h4>
+          炉と島釜飯 粋蓮（Coming soon / 客単価5,000〜6,000円 / 地元客ターゲット）
+        </div>
+        <div class="proto-block">
+          <h4>#company</h4>
+          有限会社Lotus（設立・資本金・代表・従業員・事業内容・本社/埼玉・取引銀行・問い合わせ）
+        </div>
+      </div>
+    </div>
+
+    <h2>変更時の編集箇所（早見）</h2>
+    <table>
+      <thead>
+        <tr><th>やりたいこと</th><th>ファイル</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>文言・URL・画像URL</td><td><code>lib/site-config.ts</code></td></tr>
+        <tr><td>ブランド動画の差し替え</td><td><code>site-config.ts</code> の <code>brandVideo.src</code> + <code>public/videos/</code></td></tr>
+        <tr><td>セクションの並び・ヒーロー</td><td><code>app/page.tsx</code> / <code>components/StoreSection.tsx</code></td></tr>
+        <tr><td>ブランド動画セクション本体</td><td><code>components/BrandVideoSection.tsx</code></td></tr>
+        <tr><td>ナビゲーション</td><td><code>components/SiteHeader.tsx</code></td></tr>
+        <tr><td>企業情報セクションの項目追加</td><td><code>lib/site-config.ts</code> の <code>company</code> + <code>app/page.tsx</code> の Company ブロック</td></tr>
+        <tr><td>この設計図の文章</td><td><code>design/blueprint.html</code>（このファイル）</td></tr>
+      </tbody>
+    </table>
+  </main>
+</body>
+</html>

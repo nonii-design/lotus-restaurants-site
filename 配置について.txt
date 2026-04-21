@@ -1,0 +1,20 @@
+【関野さん飲食事業 HP（Next.js LP）】
+
+■ 配置場所
+Google ドライブ: マイドライブ / Claude / 関野さん飲食事業HP
+
+ローカル（同期パスの例）:
+/Users/yusuke/Library/CloudStorage/GoogleDrive-admin@nonii.co.jp/マイドライブ/Claude/関野さん飲食事業HP
+
+■ 設計図（HTML）
+design/blueprint.html をブラウザで開くと、1ページ構成・アンカーID・外部リンクの設計を共有・確認できます。レイアウトの「試し描き」も同ファイル内にあります。
+
+■ 開発について
+このフォルダを開いたあと、ターミナルで次を実行してください（初回のみ）。
+
+  npm install
+
+Google ドライブ上のフォルダでそのまま開発するより、ローカル（例: 書類フォルダ）にコピーして作業し、都度バックアップとして Drive に置く運用を推奨します（node_modules は容量が大きいため、このコピーには含めていません）。
+
+■ Git / GitHub
+Drive 同期の都合により、.git は同梱していません。GitHub へ公開する場合は、このフォルダで `git init` から始めてください。

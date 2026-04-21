@@ -1,0 +1,130 @@
+@import "tailwindcss";
+
+/**
+ * Design tokens — Notion-inspired "warm minimalism".
+ * Adapted for a Japanese dining brand: keep Notion's warm neutrals &
+ * whisper borders, but replace the Notion Blue accent with an earthy
+ * brown that matches 粋蓮 / 炭火 / 島 context.
+ */
+:root {
+  /* Surfaces */
+  --color-bg: #ffffff;
+  --color-bg-alt: #f6f5f4;
+  --color-bg-dark: #31302e;
+
+  /* Text */
+  --color-text: rgba(0, 0, 0, 0.95);
+  --color-text-secondary: #615d59;
+  --color-text-muted: #a39e98;
+  --color-text-invert: #f6f5f4;
+
+  /* Brand accent (earthy brown instead of Notion Blue) */
+  --color-accent: #523410;
+  --color-accent-hover: #3d2608;
+  --color-accent-soft-bg: #f3ecdf;
+  --color-accent-soft-text: #7a5120;
+
+  /* Borders */
+  --border-whisper: 1px solid rgba(0, 0, 0, 0.1);
+  --border-whisper-strong: 1px solid rgba(0, 0, 0, 0.16);
+
+  /* Radius */
+  --radius-micro: 4px;
+  --radius-soft: 8px;
+  --radius-card: 12px;
+  --radius-large: 16px;
+  --radius-pill: 9999px;
+
+  /* Shadows — multi-layer Notion stacks */
+  --shadow-card:
+    rgba(0, 0, 0, 0.04) 0px 4px 18px,
+    rgba(0, 0, 0, 0.027) 0px 2.025px 7.84688px,
+    rgba(0, 0, 0, 0.02) 0px 0.8px 2.925px,
+    rgba(0, 0, 0, 0.01) 0px 0.175px 1.04062px;
+  --shadow-deep:
+    rgba(0, 0, 0, 0.01) 0px 1px 3px,
+    rgba(0, 0, 0, 0.02) 0px 3px 7px,
+    rgba(0, 0, 0, 0.02) 0px 7px 15px,
+    rgba(0, 0, 0, 0.04) 0px 14px 28px,
+    rgba(0, 0, 0, 0.05) 0px 23px 52px;
+}
+
+@theme inline {
+  --color-background: var(--color-bg);
+  --color-foreground: var(--color-text);
+  --color-surface: var(--color-bg);
+  --color-surface-alt: var(--color-bg-alt);
+  --color-surface-dark: var(--color-bg-dark);
+  --color-text-primary: var(--color-text);
+  --color-text-secondary: var(--color-text-secondary);
+  --color-text-muted: var(--color-text-muted);
+  --color-accent: var(--color-accent);
+  --color-accent-hover: var(--color-accent-hover);
+  --color-accent-soft-bg: var(--color-accent-soft-bg);
+  --color-accent-soft-text: var(--color-accent-soft-text);
+
+  --font-sans: var(--font-inter), var(--font-noto-sans-jp), ui-sans-serif,
+    system-ui, sans-serif;
+  --font-serif: var(--font-noto-serif-jp), "Hiragino Mincho ProN", "Times New Roman",
+    serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-feature-settings: "lnum", "locl";
+}
+
+.font-serif {
+  font-family: var(--font-serif);
+}
+
+/* Display headline — Notion's hallmark compressed type at scale. */
+.display {
+  letter-spacing: -0.033em; /* ≈ -2.125px @ 64px */
+  line-height: 1;
+  font-weight: 700;
+}
+
+.display-serif {
+  font-family: var(--font-serif);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  font-weight: 500;
+}
+
+.section-heading {
+  letter-spacing: -0.031em; /* ≈ -1.5px @ 48px */
+  line-height: 1;
+  font-weight: 700;
+}
+
+.subheading {
+  letter-spacing: -0.024em; /* ≈ -0.625px @ 26px */
+  line-height: 1.25;
+  font-weight: 700;
+}
+
+.card-title {
+  letter-spacing: -0.011em; /* ≈ -0.25px @ 22px */
+  line-height: 1.27;
+  font-weight: 700;
+}
+
+/* Focus ring — accessibility */
+:where(a, button, [role="button"]):focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  border-radius: var(--radius-micro);
+}
+
+::selection {
+  background: var(--color-accent-soft-bg);
+  color: var(--color-accent);
+}
