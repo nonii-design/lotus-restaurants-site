@@ -31,7 +31,7 @@ export default function Home() {
             <p className="eyebrow">Dining Brand · 志木 / 宮古島</p>
 
             <h1 className="mt-10 font-serif text-[clamp(2.1rem,5.6vw,3.75rem)] font-light leading-[1.55] tracking-[0.14em] text-[rgba(234,230,222,0.96)]">
-              「また来たよ。」で
+              「また来たよ」で
               <br />
               溢れるお店でありたい。
             </h1>
