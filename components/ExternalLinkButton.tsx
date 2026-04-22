@@ -8,11 +8,10 @@ type Props = {
 };
 
 /**
- * Notion-inspired buttons.
- * - accent : filled brand-brown, primary CTA
- * - default: translucent warm-gray, secondary action
- * - ghost  : transparent with underline-on-hover, tertiary action
- * Radius: 4px (micro) — Notion's hallmark for functional buttons.
+ * Buttons for the warm-dark theme.
+ * - accent : gold outline + translucent fill — primary action
+ * - default: whisper border — secondary action
+ * - ghost  : underline-on-hover — tertiary
  */
 export function ExternalLinkButton({
   href,
@@ -22,7 +21,7 @@ export function ExternalLinkButton({
 }: Props) {
   if (disabled) {
     return (
-      <span className="inline-flex cursor-not-allowed items-center justify-center rounded-[4px] border border-black/10 px-4 py-2 text-[14px] font-medium text-[#a39e98]">
+      <span className="inline-flex cursor-not-allowed items-center justify-center border border-white/[0.06] px-5 py-2.5 font-serif text-[12px] tracking-[0.24em] text-[#4a4440]">
         {label}
       </span>
     );
@@ -30,17 +29,17 @@ export function ExternalLinkButton({
 
   const cls =
     variant === "accent"
-      ? "bg-[#523410] text-white hover:bg-[#3d2608]"
+      ? "border-[rgba(201,169,98,0.4)] bg-[rgba(201,169,98,0.08)] text-[#d9be83] hover:border-[rgba(201,169,98,0.7)] hover:bg-[rgba(201,169,98,0.16)]"
       : variant === "ghost"
-        ? "bg-transparent text-[rgba(0,0,0,0.95)] hover:underline underline-offset-4"
-        : "bg-black/[0.05] text-[rgba(0,0,0,0.95)] hover:bg-black/[0.08]";
+        ? "border-transparent text-[#a39e98] hover:text-[#eae6de]"
+        : "border-white/[0.1] text-[#a39e98] hover:border-white/[0.24] hover:text-[#eae6de]";
 
   return (
     <a
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className={`inline-flex items-center justify-center rounded-[4px] px-4 py-2 text-[14px] font-semibold transition active:scale-[0.97] ${cls}`}
+      className={`inline-flex items-center justify-center border px-5 py-2.5 font-serif text-[12px] tracking-[0.24em] transition ${cls}`}
     >
       {label}
     </a>

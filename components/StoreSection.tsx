@@ -8,11 +8,10 @@ type Props = {
 };
 
 /**
- * Notion-inspired store card:
- * - whisper border (1px rgba(0,0,0,0.1))
- * - 12px card radius, 16px for featured hero image
- * - multi-layer soft shadow
- * - Warm white (#f6f5f4) alternation on every other card section
+ * Warm-dark store section.
+ * - 2-column layout on desktop: image card / content
+ * - whisper border on images, quiet serif typography
+ * - alternate between --color-bg and --color-bg-alt
  */
 export function StoreSection({ store, index }: Props) {
   const isSoon = store.status === "coming_soon";
@@ -21,12 +20,14 @@ export function StoreSection({ store, index }: Props) {
   return (
     <section
       id={`store-${store.slug}`}
-      className={`scroll-mt-20 ${alt ? "bg-[#f6f5f4]" : "bg-white"}`}
+      className={`scroll-mt-20 border-t border-white/[0.04] ${
+        alt ? "bg-[#100e0c]" : "bg-[#0a0908]"
+      }`}
     >
-      <div className="mx-auto max-w-[1200px] px-5 py-16 sm:px-8 sm:py-24">
-        <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_420px] lg:gap-16">
-          {/* Image card */}
-          <div className="relative aspect-[4/3] overflow-hidden rounded-[16px] border border-black/10 bg-[#f6f5f4] shadow-[var(--shadow-card)]">
+      <div className="mx-auto max-w-[1200px] px-5 py-20 sm:px-8 sm:py-28">
+        <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,440px)] lg:gap-16">
+          {/* Image */}
+          <div className="relative aspect-[4/3] overflow-hidden border border-white/[0.08] bg-[#13110f] shadow-[var(--shadow-card)]">
             <Image
               src={store.heroImage}
               alt={store.nameJa}
@@ -39,69 +40,49 @@ export function StoreSection({ store, index }: Props) {
 
           {/* Content */}
           <div className="flex flex-col justify-center">
-            <div className="flex items-center gap-2">
+            {/* Tags */}
+            <div className="flex flex-wrap items-center gap-3">
               {isSoon && (
-                <span className="inline-flex items-center rounded-full bg-[#f3ecdf] px-2.5 py-1 text-[12px] font-semibold tracking-[0.125px] text-[#7a5120]">
+                <span className="inline-flex items-center border border-[rgba(201,169,98,0.35)] bg-[rgba(201,169,98,0.06)] px-2.5 py-1 font-serif text-[11px] tracking-[0.3em] text-[#d9be83]">
                   Coming soon
                 </span>
               )}
               {store.nameSub && (
-                <span className="inline-flex items-center rounded-full border border-black/10 bg-white px-2.5 py-1 text-[12px] font-semibold tracking-[0.125px] text-[#615d59]">
+                <span className="font-serif text-[11px] tracking-[0.35em] text-[#c9a962]">
                   {store.nameSub}
                 </span>
               )}
             </div>
 
-            <h3 className="mt-5 text-[32px] leading-[1.1] tracking-[-0.02em] text-[rgba(0,0,0,0.95)] sm:text-[40px] sm:leading-[1.05]">
-              <span className="font-serif font-medium">{store.nameJa}</span>
+            {/* Title */}
+            <h3 className="mt-5 font-serif text-[28px] font-normal leading-[1.4] tracking-[0.06em] text-[rgba(234,230,222,0.96)] sm:text-[34px] sm:leading-[1.35]">
+              {store.nameJa}
             </h3>
 
-            <p className="mt-3 text-[20px] font-semibold leading-[1.4] tracking-[-0.005em] text-[#615d59]">
+            {/* Tagline */}
+            <p className="mt-4 font-serif text-[15px] leading-[1.9] tracking-[0.1em] text-[#c9a962]/90">
               {store.tagline}
             </p>
 
-            <p className="mt-6 text-[16px] leading-[1.65] text-[rgba(0,0,0,0.85)]">
+            {/* Description */}
+            <p className="mt-7 font-serif text-[14.5px] leading-[2] tracking-[0.05em] text-[#a39e98]">
               {store.description}
             </p>
 
-            {/* Meta list */}
-            <dl className="mt-8 grid gap-3 text-[14px]">
-              <div className="flex gap-3">
-                <dt className="w-20 shrink-0 font-semibold text-[#a39e98]">
-                  所在地
-                </dt>
-                <dd className="text-[rgba(0,0,0,0.85)]">{store.location}</dd>
-              </div>
+            {/* Meta list — quiet, understated dl */}
+            <dl className="mt-8 space-y-3 font-serif text-[13px] leading-[1.8]">
+              <Row label="所在地" value={store.location} />
               {isSoon && store.openingNote && (
-                <div className="flex gap-3">
-                  <dt className="w-20 shrink-0 font-semibold text-[#a39e98]">
-                    開業
-                  </dt>
-                  <dd className="text-[#7a5120]">{store.openingNote}</dd>
-                </div>
+                <Row label="開業" value={store.openingNote} accent />
               )}
-              {store.priceNote && (
-                <div className="flex gap-3">
-                  <dt className="w-20 shrink-0 font-semibold text-[#a39e98]">
-                    単価
-                  </dt>
-                  <dd className="text-[rgba(0,0,0,0.85)]">{store.priceNote}</dd>
-                </div>
-              )}
+              {store.priceNote && <Row label="単価" value={store.priceNote} />}
               {store.conceptNote && (
-                <div className="flex gap-3">
-                  <dt className="w-20 shrink-0 font-semibold text-[#a39e98]">
-                    コンセプト
-                  </dt>
-                  <dd className="text-[rgba(0,0,0,0.85)]">
-                    {store.conceptNote}
-                  </dd>
-                </div>
+                <Row label="コンセプト" value={store.conceptNote} />
               )}
             </dl>
 
             {/* Actions */}
-            <div className="mt-8 flex flex-wrap gap-2.5">
+            <div className="mt-10 flex flex-wrap gap-3">
               <ExternalLinkButton
                 href={store.reserveUrl}
                 label="予約する"
@@ -116,7 +97,7 @@ export function StoreSection({ store, index }: Props) {
             </div>
 
             {!store.googleBusinessUrl && (
-              <p className="mt-3 text-[12px] text-[#a39e98]">
+              <p className="mt-4 font-serif text-[11px] tracking-[0.2em] text-[#4a4440]">
                 Google ビジネスプロフィールはオープン後に公開予定です。
               </p>
             )}
@@ -125,15 +106,13 @@ export function StoreSection({ store, index }: Props) {
 
         {/* Gallery */}
         {store.gallery.length > 0 && (
-          <div className="mt-14">
-            <p className="text-[12px] font-semibold uppercase tracking-[0.125px] text-[#a39e98]">
-              Gallery
-            </p>
-            <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-20">
+            <p className="eyebrow">Gallery</p>
+            <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
               {store.gallery.map((src, i) => (
                 <div
                   key={src}
-                  className="relative aspect-[4/3] overflow-hidden rounded-[12px] border border-black/10 bg-[#f6f5f4] shadow-[var(--shadow-card)]"
+                  className="relative aspect-[4/3] overflow-hidden border border-white/[0.08] bg-[#13110f]"
                 >
                   <Image
                     src={src}
@@ -149,5 +128,30 @@ export function StoreSection({ store, index }: Props) {
         )}
       </div>
     </section>
+  );
+}
+
+function Row({
+  label,
+  value,
+  accent,
+}: {
+  label: string;
+  value: string;
+  accent?: boolean;
+}) {
+  return (
+    <div className="flex gap-4 border-t border-white/[0.05] pt-3">
+      <dt className="w-20 shrink-0 font-serif text-[11px] tracking-[0.3em] text-[#6a635d]">
+        {label}
+      </dt>
+      <dd
+        className={`font-serif text-[13.5px] leading-[1.8] tracking-[0.05em] ${
+          accent ? "text-[#d9be83]" : "text-[#a39e98]"
+        }`}
+      >
+        {value}
+      </dd>
+    </div>
   );
 }
