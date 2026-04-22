@@ -65,7 +65,7 @@ export function StoreSection({ store, index }: Props) {
             </p>
 
             {/* Description */}
-            <p className="mt-7 font-serif text-[14.5px] leading-[2] tracking-[0.05em] text-[#a39e98]">
+            <p className="mt-7 whitespace-pre-line font-serif text-[14.5px] leading-[2] tracking-[0.05em] text-[#a39e98]">
               {store.description}
             </p>
 

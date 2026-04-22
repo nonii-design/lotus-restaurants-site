@@ -41,9 +41,11 @@ export default function Home() {
             </p>
 
             <p className="mt-6 max-w-lg font-serif text-[13px] leading-[2.2] tracking-[0.08em] text-[#a39e98]">
-              お箸ビストロ SUIREN（志木）、地鶏と島野菜 粋蓮（宮古島）、
+              お箸ビストロ SUIREN（埼玉県：志木）、
               <br className="hidden sm:block" />
-              そして炉と島釜飯 粋蓮（2026年6月頃オープン予定）。
+              地鶏と島野菜 粋蓮（沖縄県：宮古島）、
+              <br className="hidden sm:block" />
+              そして炉と島釜飯 粋蓮（宮古島にて2026年7月OPEN予定）。
               <br className="hidden sm:block" />
               三つの店がひとつのブランドとして、それぞれの土地の魅力を紡ぎます。
             </p>
@@ -105,8 +107,8 @@ export default function Home() {
                       {s.nameJa}
                     </span>
                     {s.status === "coming_soon" && (
-                      <span className="mt-3 font-serif text-[10.5px] tracking-[0.3em] text-[#a18a53]">
-                        Coming soon
+                      <span className="mt-3 font-serif text-[10.5px] leading-[1.8] tracking-[0.25em] text-[#a18a53]">
+                        {s.openingNote ?? "Coming soon"}
                       </span>
                     )}
                   </a>
@@ -147,11 +149,11 @@ export default function Home() {
               {company.established && (
                 <CompanyRow label="設立" value={company.established} />
               )}
-              {company.capital && (
-                <CompanyRow label="資本金" value={company.capital} />
-              )}
               {company.representative && (
                 <CompanyRow label="代表" value={company.representative} />
+              )}
+              {company.partner && (
+                <CompanyRow label="パートナー" value={company.partner} />
               )}
               {company.employees && (
                 <CompanyRow label="従業員数" value={company.employees} />

@@ -12,7 +12,7 @@ export interface Store {
   tagline: string;
   location: string;
   status: StoreStatus;
-  /** coming_soon のとき表示（例: 2026年6月頃・宮古島） */
+  /** coming_soon のとき表示（例: 宮古島にて2026年7月OPEN予定） */
   openingNote?: string;
   /** 単価帯など短い補足表示（例: "客単価 5,000〜6,000円"） */
   priceNote?: string;
@@ -44,8 +44,8 @@ export const company = {
   legalNameEn: "Lotus Co., Ltd.",
   tagline: "志木・宮古島をつなぐ、食の体験。",
   established: "1999年7月",
-  capital: "300万円",
   representative: "取締役 坂西 優馬",
+  partner: "THE BROTHER WORKS（宮古島）",
   employees: "30名（2026年5月時点）",
   businessDescription:
     "飲食店経営／飲食店オペレーション受託業務／飲食店コンサルティング業務",
@@ -53,11 +53,11 @@ export const company = {
   contactEmail: "info@and-suiren.com",
   offices: [
     {
-      label: "本社",
+      label: "本社（店舗）",
       address: "沖縄県宮古島市平良下里542-2 与古田ハイツ103",
     },
     {
-      label: "埼玉オフィス",
+      label: "埼玉（店舗）",
       address: "埼玉県志木市本町5-24-2 TOMONIビル1F",
     },
   ],
@@ -67,7 +67,7 @@ export const stores: Store[] = [
   {
     slug: "suiren-shiki",
     nameJa: "お箸ビストロ SUIREN",
-    nameSub: "志木",
+    nameSub: "埼玉県：志木",
     tagline: "箸で愉しむ、ビストロの時間。",
     location: "埼玉県志木市本町5-24-2 TOMONIビル1F",
     status: "open",
@@ -84,13 +84,13 @@ export const stores: Store[] = [
     reserveUrl: "https://www.hotpepper.jp/strJ003410690/yoyaku/hpds/",
     googleBusinessUrl: "https://share.google/BiQSfbqHZErGAGwhB",
     description:
-      "志木の街に佇むお箸ビストロ。カジュアルでありながら上質な一皿と、くつろげる空間をご用意しています。",
+      "東武東上線志木駅東口からスキップで1分♪\n肩肘張らないカジュアルな創作ビストロ。美味しかったよ、も大事ですが、楽しかったよ、と言って頂けるお店作りを。",
   },
   {
     slug: "suiren-miyako",
     nameJa: "地鶏と島野菜 粋蓮",
-    nameSub: "宮古島",
-    tagline: "島の恵みを、炭火とともに。",
+    nameSub: "沖縄県：宮古島",
+    tagline: "島の恵みを活かし、地鶏を食らう。",
     location: "沖縄県宮古島市",
     status: "open",
     heroImage: "/images/suiren-miyako/miyako-30.jpg",
@@ -107,16 +107,16 @@ export const stores: Store[] = [
     googleBusinessUrl: "https://share.google/67l98zmxGrRQEvSga",
     conceptNote: "地元のお客様を中心に、観光シーズン（4月〜11月）も賑わう一軒。",
     description:
-      "宮古島の地鶏と島野菜を中心に、ローカルな味わいをモダンに仕立てたダイニングです。",
+      "宮古島の島野菜と各地から厳選して仕入れた地鶏、都内で活躍した居酒屋職人たちが「これぞ」という料理とお酒をご用意。",
   },
   {
     slug: "ro-suiren",
     nameJa: "炉と島釜飯 粋蓮",
-    nameSub: "宮古島 新店",
+    nameSub: "沖縄県：宮古島",
     tagline: "炉の炭火と、島釜飯で。",
     location: "沖縄県宮古島市（店舗詳細は順次公開）",
     status: "coming_soon",
-    openingNote: "2026年6月頃オープン予定",
+    openingNote: "宮古島にて2026年7月OPEN予定",
     priceNote: "客単価 5,000〜6,000円",
     conceptNote:
       "地元のお客様を大切に。観光シーズンも楽しめる、少し上質な炭火と釜飯の店。",

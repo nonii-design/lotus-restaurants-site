@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     template: "%s | Lotus",
   },
   description:
-    "志木・宮古島を拠点とする飲食ブランド。お箸ビストロ SUIREN、地鶏と島野菜 粋蓮、炉と島釜飯 粋蓮（2026年6月頃オープン予定）。",
+    "志木・宮古島を拠点とする飲食ブランド。お箸ビストロ SUIREN（埼玉県：志木）、地鶏と島野菜 粋蓮（沖縄県：宮古島）、炉と島釜飯 粋蓮（宮古島にて2026年7月OPEN予定）。",
   openGraph: {
     title: "有限会社Lotus",
     description: "志木・宮古島をつなぐ、食の体験。SUIREN / 粋蓮。",
