@@ -150,7 +150,7 @@ export default function Home() {
                 <CompanyRow label="設立" value={company.established} />
               )}
               {company.representative && (
-                <CompanyRow label="代表" value={company.representative} />
+                <CompanyRow label="役員" value={company.representative} />
               )}
               {company.partner && (
                 <CompanyRow label="パートナー" value={company.partner} />
